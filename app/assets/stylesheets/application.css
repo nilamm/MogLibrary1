@@ -1,0 +1,231 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.container {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #5b5b5b;
+}
+
+#full_head {
+  padding-top: 10px;
+}
+
+
+/*
+div > div {
+	border: 1px solid black;
+}
+*/
+
+/*
+body {
+  background-color: #fdf8f7 !important;
+}
+*/
+
+.menu_list ul {
+  list-style-type: none;
+  padding: none;
+}
+
+.title_link:link, .title_link:visited, .title_link:hover, .title_link:active {
+  color: #5b5b5b;
+  text-decoration: none;
+}
+
+#search_bar label {
+  text-align: right;
+}
+
+#search {
+  background-color: #faf8f6;
+  border: 1px solid #fdf8f7;
+  box-shadow: 2px 2px 5px #e2d5c8;
+  border-radius: 15px;
+  color: #757575;
+}
+
+#search:focus {
+  border: 1px solid #757575;
+  box-shadow: 2px 2px 10px #c8d5e2;
+}
+
+#search:hover {
+  border: 1px solid #757575;
+  box-shadow: 2px 2px 20px #aec1d4;
+}
+
+#search-form button {
+  position: relative;
+  top: .5em;
+  left: -15px;
+}
+
+.login_div {
+  text-align: right;
+}
+
+.entry {
+  border-left: 1px solid #b7b7b7;
+  border-bottom: 1px solid #b7b7b7;
+  border-radius: 5px 5px 5px 25px;
+  margin-bottom: 10px;
+  padding-top: 3px;
+  background-color: #fff;
+}
+
+.entry:hover {
+  background-color: #fbf9f7;
+  box-shadow: 0px 2px 10px #e2d5c8;
+}
+
+.mogtitle {
+  font-family: 'Libre Baskerville', serif;
+}
+
+.writer_title {
+  font-weight: 300;
+}
+
+.title_text {
+	font-weight: 700;
+  font-size: 110%;
+}
+
+.title_text:hover {
+  text-decoration: underline;
+}
+
+.avail_row {
+  font-size: 90%;
+  font-weight: 300;
+}
+
+ul.moreinfo_list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* For hidden Additional Info section */
+.moreinfo_sect {
+  display: none;
+}
+
+/* For anything that causes the Additional Info section to expand */
+.expander:hover {
+  cursor: pointer;
+}
+
+.attr_value {
+  font-weight: 300;
+}
+
+.pic_col {
+  text-align: center
+}
+
+.pic_link {
+  min-height: 105px;
+}
+
+.pic_link img {
+  max-width:80px;
+  max-height:100px;
+  width:auto;
+  height:auto;
+  margin: auto;
+  display: block;
+  border: 1px solid #cbbfb4;
+  padding: 2px;
+}
+
+.pic_link img:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+  border-color: #9999ff;
+}
+
+.showing_space {
+  margin-top: 10px;
+  margin-left: 10px;
+  color: #757575;
+  font-weight: 300;
+}
+
+.page_space {
+  text-align: center;
+  padding: none;
+  height: 40px;
+}
+
+
+/* Temp css for pagination, borrowed from Apple store */
+.pagination {
+  height: 30px;
+  text-align: center;
+  padding: none;
+  cursor: default;
+  position: relative;
+  top: -15px;
+}
+.pagination a, .pagination span {
+    padding: 0.2em 0.3em; }
+.pagination .disabled {
+    color: #aaaaaa; }
+.pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background-color: #ece3d8;
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    line-height: 1.5;
+    -moz-border-radius: 1em;
+    -webkit-border-radius: 1em;
+    border-radius: 1em;
+    text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+.pagination a {
+    text-decoration: none;
+    color: black; }
+.pagination a:hover, .pagination a:focus {
+      text-decoration: underline; }
+
+.nothing_found {
+  padding-top: 20px;
+}
+
+.edit_resource, .new_resource {
+  position: relative;
+  top: 10px;
+}
+
+.edit_resource .form-control, .new_resource .form-control {
+  margin-bottom: 10px;
+}
+
+.edit_resource label, .new_resource label {
+  text-align: right;
+  position: relative;
+  top: .5em;
+  left: 15px;
+}
+
+.edit_resource .subm_edit_btn, .new_resource .subm_edit_btn{
+  text-align: center;
+  margin-bottom: 10px;
+}
+

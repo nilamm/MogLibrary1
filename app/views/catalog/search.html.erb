@@ -1,0 +1,16 @@
+<% if @resources.present? %>
+	<%= render partial: "shared/searchbar" %>
+	<% @resources.each do |resource| %>
+		<%= render partial: "shared/list", locals: {resource: resource}%>
+	<% end %>
+
+
+
+<% else %>
+	<% content_for :showing_results do %>
+		<div class="showing_space">
+			No search results found.
+		</div>
+
+	<% end %>
+<% end %>

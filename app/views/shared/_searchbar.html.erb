@@ -1,0 +1,12 @@
+<% content_for :showing_results do %>
+	<div class="showing_space">
+		<% if @resources_total == 1 %>
+		Found <%= @resources_total %> result.
+		<% else %>
+		Found <%= @resources_total %> results.
+		<% end %>
+	</div>
+	<div class="page_space">
+		<%= will_paginate @resources %>
+	</div>
+<% end %>

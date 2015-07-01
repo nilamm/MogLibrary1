@@ -1,0 +1,99 @@
+<div class="col-sm-10 col-sm-offset-1">
+	<div class="row">
+		<%= form_for @resource, url: {action: "update"} do |f| %>
+			<div class="form-group">
+				<%= f.label :title, class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_field :title, class: 'form-control'%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :composer, class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_field :composer, class: 'form-control'%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :arranger, class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_field :arranger, class: 'form-control'%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :libretto, class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_field :libretto, class: 'form-control'%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :voice, "Voicing", class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_field :voice, class: 'form-control'%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :accomp, "Accompaniment", class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_field :accomp, class: 'form-control'%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :genre, class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_field :genre, class: 'form-control'%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :language, class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_field :language, class: 'form-control'%>
+				</div>
+			</div>					
+			<div class="form-group">
+				<%= f.label :region, class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_field :region, class: 'form-control'%>
+				</div>
+			</div>	
+			<div class="form-group">
+				<%= f.label :theme, class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_field :theme, class: 'form-control'%>
+				</div>
+			</div>	
+			<div class="form-group">
+				<%= f.label :res_type, "Type", class: 'col-sm-3 control-label'%>
+				<div class="col-sm-9">
+					<%= f.text_field :res_type, class: 'form-control', placeholder: 'Ex:  Book, DVD, Octavo, Score' %>
+				</div>
+			</div>	
+			<div class="form-group">
+				<%= f.label :curric, "Curriculum Connection", class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_area :curric, class: 'form-control'%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :additional, "Additional Information", class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+					<%= f.text_area :additional, class: 'form-control'%>
+				</div>
+			</div>		
+			<div class="form-group">
+				<%= f.label :link, class: 'col-sm-3 control-label'%>
+				<div class="col-sm-9">
+					<%= f.text_field :link, class: 'form-control', placeholder: 'URL' %>
+				</div>
+			</div>	
+			<div class="form-group">
+				<%= f.label :pic, "Picture", class: 'col-sm-3 control-label'%>
+				<div class="col-sm-9">
+					<%= f.text_field :pic, class: 'form-control', placeholder: 'URL of picture' %>
+				</div>
+			</div>	
+			<div class="subm_edit_btn">
+				<%= f.submit "Submit", class: 'btn-info active'%>
+			</div>
+		<% end %>
+	</div>
+</div>
