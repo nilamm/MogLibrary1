@@ -35,10 +35,25 @@
 						</div>
 					</div>
 					<div class="col-sm-2 login_div">
-						<%= link_to "Create new record", new_path %>
+						<!-- <%= link_to "Create new record", new_path %> -->
+						<ul>
+							<li><a href="#">View my checkouts</a><li>
+								<% if current_user && current_user.admin? %>
+									<li><%= link_to "Admin Tools", backend_path %></li>
+								<% end %>
+						</ul>
 					</div>
 					<div class="col-sm-2 login_div">
-						<a href="#">Login</a>
+						<% if current_user %> 
+	
+						    <div>Logged in as <span class="username"><%= current_user.username %></span></div> 
+						    <div><%= link_to "Log out", logout_path, method: "delete" %></div> 
+	
+						<% else %> 
+						  <ul> 
+						    <li><%= link_to "Login", 'login' %></a></li> 
+						  </ul> 
+						<% end %>
 					</div>
 				</div>
 			</div>

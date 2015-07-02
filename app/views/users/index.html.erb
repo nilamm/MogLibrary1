@@ -1,0 +1,28 @@
+<table>
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Username</th>
+		<th>Password</th>
+		<th>Region</th>
+		<th>Role</th>
+	</tr>
+<% @users.each do |u| %>
+<tr>
+	<td><%= u.first_name %></td>
+	<td><%= u.last_name %></td>
+	<td><%= u.username %></td>
+	<td><% if u.password_digest.present? %>
+		<span> *** </span>
+		<% end %>
+	</td>
+	<td><%= u.region %></td>
+	<td><%= u.role %></td>
+	<td>
+		<%= link_to "Edit", edit_user_path(u) %>
+	</td>
+
+</tr>
+<% end %>
+
+</table>

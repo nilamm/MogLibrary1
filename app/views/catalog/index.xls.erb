@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Resources">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Title</Data></Cell>
+        <Cell><Data ss:Type="String">Composer</Data></Cell>
+        <Cell><Data ss:Type="String">Arranger</Data></Cell>
+        <Cell><Data ss:Type="String">Libretto-Text</Data></Cell>
+        <Cell><Data ss:Type="String">Voicing</Data></Cell>
+        <Cell><Data ss:Type="String">Accompaniment</Data></Cell>
+        <Cell><Data ss:Type="String">Genre</Data></Cell>
+        <Cell><Data ss:Type="String">Language</Data></Cell>
+        <Cell><Data ss:Type="String">Region</Data></Cell>
+        <Cell><Data ss:Type="String">Theme</Data></Cell>
+        <Cell><Data ss:Type="String">Curriculum Connections</Data></Cell>
+        <Cell><Data ss:Type="String">Additional Info</Data></Cell>
+        <Cell><Data ss:Type="String">Total Number</Data></Cell>
+        <Cell><Data ss:Type="String">Number Available</Data></Cell>
+        <Cell><Data ss:Type="String">Resource Type</Data></Cell>
+        <Cell><Data ss:Type="String">Link</Data></Cell>
+        <Cell><Data ss:Type="String">Picture Link</Data></Cell>
+      </Row>
+    <% @resources.each do |resource| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= resource.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.title %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.composer %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.arranger %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.libretto %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.voice %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.accomp %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.genre %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.language %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.region %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.theme %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.curric %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.additional %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= resource.num_tot %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= resource.num_avail %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.res_type %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.link %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.pic %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

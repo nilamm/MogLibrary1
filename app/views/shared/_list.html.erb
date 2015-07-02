@@ -75,7 +75,15 @@
 						<span class="attr_value"><%= resource.curric %></span>
 					</li>
 				<% end %>
-				<%= link_to "Edit Entry", edit_path(resource) %>
+				<li><a href="#">Add Comment</a></li>
+				<% if current_user && !current_user.admin? %>
+					<li><a href="#">Request Checkout</a></li>
+				<% end %>
+
+				<% if current_user && current_user.admin? %>
+					<li><a href="#">Checkout Item</a></li>
+				<% end %>
+				<li><%= link_to "Edit Entry", edit_path(resource) %></li>
 			</ul>
 		</div>
 	</div>

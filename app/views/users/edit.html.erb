@@ -1,0 +1,11 @@
+    <%= form_for(@user) do |f| %>
+      <%= f.text_field :first_name, :placeholder => "First name" %>
+      <%= f.text_field :last_name, :placeholder => "Last name" %>
+      <%= f.text_field :username, :placeholder => "Username" %>
+      <%= f.text_field :region, :placeholder => "Region" %>
+      <%= f.text_field :role, :placeholder => "Role" %>
+      <div>Reset password?</div>
+      <%= f.submit "Update account", class: "btn-submit" %>
+    <% end %>
+
+    <%= link_to "delete", @user, method: :delete, data: { confirm: "Permanently delete #{@user.first_name} #{@user.last_name}?"} %> 

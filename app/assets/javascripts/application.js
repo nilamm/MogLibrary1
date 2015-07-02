@@ -23,6 +23,7 @@ $(document).ready(function(){
 
 $(document).on('page:change', function() { //uses page:change otherwise does not load with pagination
    $("#search").focus();
+   $(".form_target").focus();
 
    $(".expander").click(function() {
    		var $details = $(this).closest("div.entry").find(".moreinfo_sect");

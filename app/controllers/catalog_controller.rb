@@ -1,10 +1,17 @@
 class CatalogController < ApplicationController
+	before_action :require_user, only: [:search, :index, :edit, :update, :new, :create]
+	before_action :require_admin, only: [:index, :new, :create]
+
 	def welcome
 		@resource_count = Resource.all.count
 	end
 
 	def index
 		@resources = Resource.all.order(:title)
+		respond_to do |format|
+			format.html
+			format.xls
+		end
 	end
 	def search
 		@pagelimit = 20
