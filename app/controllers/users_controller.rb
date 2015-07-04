@@ -1,10 +1,22 @@
 class UsersController < ApplicationController
 	before_action :require_user, only: [:index, :new, :create, :edit, :update, :destroy, :show]
-	before_action :require_admin, only: [:index, :new, :create, :edit, :update, :destroy, :show]
+	before_action :require_admin, only: [:index, :new, :create, :edit, :update, :destroy]
+	#before_filter :authenticate_user! 
 
 	def index
 		@users = User.all.order(:last_name)
 	end
+
+	def show
+		@user = User.find(params[:id])
+		@checkouts = @user.checkouts
+		
+	end
+
+	def user_checkouts
+		@users = User.joins(:checkouts).uniq
+	end
+
 
 	def new
 		@user = User.new
@@ -39,9 +51,6 @@ class UsersController < ApplicationController
 		User.find(params[:id]).destroy
 	    flash[:success] = "User deleted"
 	    redirect_to users_path
-	end
-
-	def show
 	end
 
 	private

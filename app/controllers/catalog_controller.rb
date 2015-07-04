@@ -13,6 +13,11 @@ class CatalogController < ApplicationController
 			format.xls
 		end
 	end
+
+	def show
+		@resource = Resource.find(params[:id])
+	end
+	
 	def search
 		@pagelimit = 20
 		if params[:search]

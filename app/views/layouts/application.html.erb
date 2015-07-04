@@ -37,10 +37,14 @@
 					<div class="col-sm-2 login_div">
 						<!-- <%= link_to "Create new record", new_path %> -->
 						<ul>
-							<li><a href="#">View my checkouts</a><li>
-								<% if current_user && current_user.admin? %>
-									<li><%= link_to "Admin Tools", backend_path %></li>
-								<% end %>
+							<% if current_user %>
+								<li>
+									<%= link_to "View my checkouts", user_path(current_user) %>
+								<li>
+							<% end %>
+							<% if current_user && current_user.admin? %>
+								<li><%= link_to "Admin Tools", backend_path %></li>
+							<% end %>
 						</ul>
 					</div>
 					<div class="col-sm-2 login_div">

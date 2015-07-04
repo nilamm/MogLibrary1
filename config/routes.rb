@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  get '/catalog' => 'catalog#index', as: :excel
+ get '/catalog/:id' => 'catalog#show', as: :show_resource
  get '/search' => 'catalog#search', as: :resources
  get '/edit/:id' => 'catalog#edit', as: :edit
  patch '/:id' => 'catalog#update'
@@ -15,5 +16,8 @@ Rails.application.routes.draw do
  delete 'logout' => 'sessions#destroy'
 
  get '/admin' => 'backend#index', as: :backend
+
+ resources :checkouts
+ get '/usercheckouts' => 'users#user_checkouts', as: :user_checkouts
  
 end

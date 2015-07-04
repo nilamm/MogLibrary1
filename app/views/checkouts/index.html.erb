@@ -1,0 +1,4 @@
+Viewing all checkouts.
+<% @checkouts.each do |checkout| %>
+	<%= render partial: "shared/checkouts", locals: {checkout: checkout}%>
+<% end %>

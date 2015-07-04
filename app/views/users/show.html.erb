@@ -1,0 +1,9 @@
+
+<div>
+	Viewing checkouts for <%= @user.name_and_username %>
+</div>
+<% if @checkouts.present? %>
+	<% @checkouts.each do |checkout| %>
+		<%= render partial: "shared/checkouts", locals: {checkout: checkout}%>
+	<% end %>
+<% end %>
