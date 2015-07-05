@@ -59,6 +59,13 @@ class CatalogController < ApplicationController
 		end
 	end
 
+	def show_checkouts
+		@resource = Resource.find(params[:id])
+		@checkouts = @resource.checkouts
+		@checkouts_out = @checkouts.where("outstanding > 0").includes(:user).order("users.last_name ASC")
+		@checkouts_ret = @checkouts.where("outstanding = 0").includes(:user).order("users.last_name ASC")
+	end
+
 	private
 		def resource_params
 			params.require(:resource).permit(:title, :composer, :arranger, :libretto, :voice, :accomp, :genre, :language, :region, :theme, :curric, :additional, :res_type, :link, :pic, :num_tot)

@@ -19,5 +19,8 @@ Rails.application.routes.draw do
 
  resources :checkouts
  get '/usercheckouts' => 'users#user_checkouts', as: :user_checkouts
+ get '/catalog/:id/return' => 'checkouts#return', as: :return
+ patch '/catalog/:id/return' => 'checkouts#return_update'
+ get '/catalog/:id/checkouts' => 'catalog#show_checkouts', as: :resource_checkouts
  
 end

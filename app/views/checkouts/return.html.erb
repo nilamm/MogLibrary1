@@ -1,0 +1,19 @@
+<%= @checkout.user.name_and_username %>
+<%= @checkout.resource.title %>
+		<%= form_for @checkout, url: {action: "return_update"} do |f| %>
+			<div class="form-group">
+				<%= f.label :returning, class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+				<%= f.number_field :returning, min: 1, max: @checkout.outstanding, class: 'form-control form_target'%>
+				</div>
+			</div>
+			<div class="form-group">
+				<%= f.label :notes, class: 'col-sm-3 control-label' %>
+				<div class="col-sm-9">
+				<%= f.text_field :notes, class: 'form-control form_target'%>
+				</div>
+			</div>
+			<div class="subm_edit_btn">
+				<%= f.submit "Return", class: 'btn-info active'%>
+			</div>
+		<% end %>

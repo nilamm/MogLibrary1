@@ -1,0 +1,15 @@
+Outstanding:
+<% if @checkouts_out.present? %>
+	<% @checkouts_out.each do |checkout| %>
+		<%= render partial: "shared/checkouts", locals: {checkout: checkout}%>
+	<% end %>
+<% else %>
+	<div>None</div>
+<% end %>
+
+<% if @checkouts_ret.present? %>
+<div>Fully returned:</div>
+	<% @checkouts_ret.each do |checkout| %>
+		<%= render partial: "shared/checkouts", locals: {checkout: checkout}%>
+	<% end %>
+<% end %>

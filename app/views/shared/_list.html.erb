@@ -83,6 +83,7 @@
 				<% if current_user && current_user.admin? %>
 					<li><%= link_to "Checkout Item", new_checkout_path(:resource_id => resource.id) %></li>
 				<% end %>
+				<li><%= link_to "View Checkouts", resource_checkouts_path(resource) %></li>
 				<li><%= link_to "Edit Entry", edit_path(resource) %></li>
 			</ul>
 		</div>

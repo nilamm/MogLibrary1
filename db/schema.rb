@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702191455) do
+ActiveRecord::Schema.define(version: 20150705150523) do
 
   create_table "checkouts", force: :cascade do |t|
     t.integer  "num_checked"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20150702191455) do
     t.integer  "resource_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "outstanding"
   end
 
   create_table "resources", force: :cascade do |t|

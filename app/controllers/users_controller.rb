@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@checkouts = @user.checkouts
+		@checkouts_out = @checkouts.where("outstanding > 0").includes(:user).order("users.last_name ASC")
+		@checkouts_ret = @checkouts.where("outstanding = 0").includes(:user).order("users.last_name ASC")
 		
 	end
 

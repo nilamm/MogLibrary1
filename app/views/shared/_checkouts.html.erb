@@ -25,12 +25,20 @@
 			<div>Artist: <%= checkout.user.name_and_username %></div>
 			<% if checkout.notes.present? %>
 				<div>Notes: <%= checkout.notes %></div>
+				<% if current_user && current_user.admin? %>
+					<div><%= link_to "[Edit note]", edit_checkout_path(checkout) %></div>
+				<% end %>
+			<% else %>
+				<% if current_user && current_user.admin? %>
+					<div><%= link_to "[Add note]", edit_checkout_path(checkout) %></div>
+				<% end %>
 			<% end %>
 		</div>
 		<div class="col-sm-2">
-			<div>Quantity: <%= checkout.num_checked %></div>
+			<div>Outstanding: <%= checkout.outstanding %></div>
+			<div>Checkout Total: <%= checkout.num_checked %></div>
 			<% if current_user && current_user.admin? %>
-				<div><a href="#">Return</a></div>
+				<div><%= link_to "Return", return_path(checkout) %></div>
 			<% end %>
 		</div>
 	</div>
