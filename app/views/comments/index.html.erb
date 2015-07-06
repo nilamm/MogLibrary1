@@ -1,0 +1,38 @@
+<div class="comments_heading">
+	Comments:
+</div>
+<div class="comments_section">
+
+<% @comments.each do |comment| %>
+	<div class="row comment_entry">
+		<div class="col-sm-3">
+			<div class="title"><%= link_to comment.resource.title, show_resource_path(comment.resource) %></div>
+			<div>
+			<% if comment.resource.link.present? && comment.resource.pic.present? %>
+				<%= link_to (image_tag comment.resource.pic), comment.resource.link, :target => "_blank", :class => "img-responsive"  %>
+			<% elsif comment.resource.pic.present? %>
+				<%= image_tag comment.resource.pic, :class => "img-responsive" %>
+			<% end %>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<div class="comment_user">
+				<span class="cat">User: </span>
+				<%= comment.user.name_and_username %>
+			</div>
+			<div class="comment_content">
+				<span class="cat">Comment: </span>
+				<%= comment.content %>
+			</div>
+			<div class="comment_rating">
+				<span class="cat">Rating: </span>
+				<%= raw comment.rating_stars %>
+			</div>
+		</div>
+		<div class="col-sm-1">
+			<%= link_to "[Edit]", edit_comment_path(comment) %>
+		</div>
+	</div>
+<% end %>
+
+</div>

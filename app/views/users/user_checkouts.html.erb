@@ -1,7 +1,15 @@
-<ul>
-<% @users.each do |user| %>
-	<li>
-		<%= link_to user.name_and_username, user_path(user) %>
-	</li>
-<% end %>
-</ul>
+
+<div class="user_checkouts col-sm-10 col-sm-offset-2">
+	<div class="row">
+		Select Artist:
+	</div>
+	<div class="row user_checkout_list">
+		<ul>
+		<% @users.each do |user| %>
+			<li>
+				<span class="bullet">></span><%= link_to user.name_and_username, user_path(user) %>
+			</li>
+		<% end %>
+		</ul>
+	</div>
+</div>

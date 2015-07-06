@@ -1,5 +1,5 @@
 
-<div>
-	Viewing checkouts for <%= @user.name_and_username %>
+<div class="checkouts_lead">
+	Viewing checkouts for <%= @user.name_and_username %>.
 </div>
 <%= render partial: "shared/checkout_page", locals: {checkouts_out: @checkouts_out, checkouts_ret: @checkouts_ret}%>

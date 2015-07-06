@@ -75,15 +75,26 @@
 						<span class="attr_value"><%= resource.curric %></span>
 					</li>
 				<% end %>
-				<li><a href="#">Add Comment</a></li>
+				<% if resource.comments.present? %>
+				<li>Comments:
+					<%= render partial: "shared/comment_inline", locals: {comments: resource.comments}%>
+					<% end %>
+				</li>
+				<li><%= link_to "Add Comment", new_comment_path(:resource_id => resource) %></li>
 				<% if current_user && !current_user.admin? %>
 					<li><a href="#">Request Checkout</a></li>
 				<% end %>
 
 				<% if current_user && current_user.admin? %>
-					<li><%= link_to "Checkout Item", new_checkout_path(:resource_id => resource.id) %></li>
+					<li><%= link_to "Checkout Item", new_checkout_path(:resource_id => resource) %></li>
 				<% end %>
-				<li><%= link_to "View Checkouts", resource_checkouts_path(resource) %></li>
+				<% if resource.checkouts_count > 0 %>
+					<li><%= link_to "View Checkouts (#{resource.checkouts_count})", resource_checkouts_path(resource) %>
+					</li>
+				<% elsif resource.checkouts_past > 0 %>
+					<li><%= link_to "View Past Checkouts", resource_checkouts_path(resource) %>
+					</li>
+				<% end %>
 				<li><%= link_to "Edit Entry", edit_path(resource) %></li>
 			</ul>
 		</div>
@@ -99,7 +110,21 @@
 			<% end %>
 		</div>
 		<div class="rating">
-			3 stars
+			<div>
+				<% if resource.avg_rating.present? %>
+					<%= raw resource.avg_rating %>
+				<% end %>
+			</div>
+				<% if resource.comments.count > 0 %>
+				<div>		
+					[<%= resource.comments.count %>
+						<% if resource.comments.count == 1 %>
+						comment]
+						<% else %>
+						comments]
+						<% end %>
+				</div>
+				<% end %>
 		</div>
 	</div>
 </div>

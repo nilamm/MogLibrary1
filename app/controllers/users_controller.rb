@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 	end
 
 	def user_checkouts
-		@users = User.joins(:checkouts).uniq
+		@users = User.joins(:checkouts).uniq.order("last_name ASC")
 	end
 
 

@@ -5,5 +5,29 @@ class Resource < ActiveRecord::Base
 
 	has_many :checkouts
 	has_many :users, through: :checkouts
+	has_many :comments
+	has_many :users, through: :comments
+
+	def avg_rating
+		if comments.sum(:rating) > 0
+			@avg = comments.average(:rating)
+			rating = @avg.round
+			stars = ""
+			rating.times do
+				stars += '<span class="glyphicon glyphicon-star rating-star"></span>'
+			end
+			stars
+		end
+	end
+
+	def checkouts_count
+		@checkouts_out = checkouts.where("outstanding > 0")
+		@checkouts_out.count
+	end
+
+	def checkouts_past
+		@checkouts_ret = checkouts.where("outstanding = 0")
+		@checkouts_ret.count
+	end
 
 end

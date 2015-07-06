@@ -1,0 +1,11 @@
+<ul>
+<% comments.each do |comment| %>
+	<li>
+		<%= comment.user.first_last %>: <%= comment.content %>
+		<%= raw comment.rating_stars %>
+		<% if current_user && (current_user == comment.user || current_user.admin?) %>
+			<%= link_to "[Edit]", edit_comment_path(comment) %>
+		<% end %>
+	</li>
+<% end %>
+</ul>

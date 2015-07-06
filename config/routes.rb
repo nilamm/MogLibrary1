@@ -22,5 +22,7 @@ Rails.application.routes.draw do
  get '/catalog/:id/return' => 'checkouts#return', as: :return
  patch '/catalog/:id/return' => 'checkouts#return_update'
  get '/catalog/:id/checkouts' => 'catalog#show_checkouts', as: :resource_checkouts
+
+ resources :comments
  
 end

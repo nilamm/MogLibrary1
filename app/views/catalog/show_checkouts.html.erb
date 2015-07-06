@@ -1,6 +1,6 @@
 
-<div>
-	Viewing checkouts for <%= @resource.title %>
+<div class="checkouts_lead">
+	Viewing checkouts for "<%= @resource.title %>."
 </div>
 
 <%= render partial: "shared/checkout_page", locals: {checkouts_out: @checkouts_out, checkouts_ret: @checkouts_ret}%>

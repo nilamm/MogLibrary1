@@ -1,8 +1,9 @@
 class CheckoutsController < ApplicationController
 	#restrict new, create, destroy to only admin
+	before_action :require_user, only: [:index, :new, :create, :return, :return_update, :edit, :update]
+	before_action :require_admin, only: [:index, :new, :create, :return, :return_udpate, :edit, :update]
 	
 	def index
-		#@checkouts = Checkout.all.includes(:user).order("users.last_name ASC")
 		@checkouts_out = Checkout.where("outstanding > 0").includes(:user).order("users.last_name ASC")
 		@checkouts_ret = Checkout.where("outstanding = 0").includes(:user).order("users.last_name ASC")
 	end
@@ -23,7 +24,7 @@ class CheckoutsController < ApplicationController
 			#redirect_to root_path
 			redirect_to session.delete(:return_to)
 		else
-			render 'create'
+			render 'new'
 		end
 	end
 

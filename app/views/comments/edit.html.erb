@@ -1,0 +1,13 @@
+<div class="col-sm-10 col-sm-offset-1">
+	<div class="row">
+		<div>Comment by <span><%= @comment.user.name_and_username %></span></div>
+		<%= form_for @comment do |f| %>
+			<%= f.text_area :content, class: 'form_target' %>
+			<%= f.number_field :rating, min: 1, max: 5 %>
+
+			<div class="subm_edit_btn">
+				<%= f.submit "Update", class: 'btn-info active'%>
+			</div>
+		<% end %>
+	</div>
+</div>

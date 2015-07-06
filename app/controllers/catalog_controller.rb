@@ -1,5 +1,5 @@
 class CatalogController < ApplicationController
-	before_action :require_user, only: [:search, :index, :edit, :update, :new, :create]
+	before_action :require_user, only: [:search, :index, :edit, :update, :new, :create, :show, :show_checkouts]
 	before_action :require_admin, only: [:index, :new, :create]
 
 	def welcome
@@ -21,7 +21,8 @@ class CatalogController < ApplicationController
 	def search
 		@pagelimit = 20
 		if params[:search]
-			@resources = Resource.search(params[:search]).order(:title)
+			#@resources = Resource.search(params[:search]).order(:title)
+			#@resources = Resource.search(params[:search]).where(:id => current_user.id)
 		else
 			@resources = nil
 		end
@@ -46,16 +47,17 @@ class CatalogController < ApplicationController
 
 	def new
 		@resource = Resource.new
+		session[:return_to] ||= request.referer
 	end
 
 	def create
 		@resource = Resource.new(resource_params)
 		if @resource.save
 			@resource.update(num_avail: @resource.num_tot)
-			redirect_to root_path
-			#redirect_to session.delete(:return_to)
+			#redirect_to root_path
+			redirect_to session.delete(:return_to)
 		else
-			render 'edit' #need to change this later
+			render 'new'
 		end
 	end
 
@@ -68,7 +70,7 @@ class CatalogController < ApplicationController
 
 	private
 		def resource_params
-			params.require(:resource).permit(:title, :composer, :arranger, :libretto, :voice, :accomp, :genre, :language, :region, :theme, :curric, :additional, :res_type, :link, :pic, :num_tot)
+			params.require(:resource).permit(:title, :composer, :arranger, :libretto, :voice, :accomp, :genre, :language, :region, :theme, :curric, :additional, :res_type, :link, :pic, :num_avail, :num_tot)
 		end
 
 	

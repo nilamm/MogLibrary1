@@ -1,6 +1,6 @@
-	<div class="row">
+	<div class="row checkout_entry">
 		<div class="col-sm-3">
-			<div><%= link_to checkout.resource.title, show_resource_path(checkout.resource) %></div>
+			<div class="title"><%= link_to checkout.resource.title, show_resource_path(checkout.resource) %></div>
 			<div>
 			<% if checkout.resource.link.present? && checkout.resource.pic.present? %>
 				<%= link_to (image_tag checkout.resource.pic), checkout.resource.link, :target => "_blank", :class => "img-responsive"  %>
@@ -9,22 +9,28 @@
 			<% end %>
 			</div>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-3">
 			<% if checkout.resource.composer.present? %>
-				<div>Composer: <%= checkout.resource.composer %></div>
+				<div><span class="cat"> Composer: </span><%= checkout.resource.composer %></div>
 			<% end %>
 			<% if checkout.resource.arranger.present? %>
-				<div>Arranger: <%= checkout.resource.arranger %></div>
+				<div><span class="cat">Arranger: </span><%= checkout.resource.arranger %></div>
 			<% end %>
 			<% if checkout.resource.voice.present? %>
-				<div>Voicing: <%= checkout.resource.voice %></div>
+				<div><span class="cat">Voicing: </span><%= checkout.resource.voice %></div>
 			<% end %>
 		</div>
 		<div class="col-sm-3">
-			<div>Date: <%= checkout.created_at.strftime("%m/%d/%y %I:%M %p") %></div>
-			<div>Artist: <%= checkout.user.name_and_username %></div>
-			<% if checkout.notes.present? %>
-				<div>Notes: <%= checkout.notes %></div>
+			<div><span class="cat">Artist: </span>
+				<% if current_user && current_user.admin? %>
+					<%= link_to checkout.user.name_and_username, user_path(checkout.user) %>
+				<% else %>
+					<%= checkout.user.name_and_username %>
+				<% end %>
+				</div>
+			<div><span class="cat">Date: </span><%= checkout.created_at.strftime("%m/%d/%y %I:%M %p") %></div>
+			<% if checkout.notes.present? && (current_user == checkout.user || current_user.admin?) %>
+				<div><span class="cat">Notes: </span><%= checkout.notes %></div>
 				<% if current_user && current_user.admin? %>
 					<div><%= link_to "[Edit note]", edit_checkout_path(checkout) %></div>
 				<% end %>
@@ -34,11 +40,11 @@
 				<% end %>
 			<% end %>
 		</div>
-		<div class="col-sm-2">
-			<div>Outstanding: <%= checkout.outstanding %></div>
+		<div class="col-sm-3">
+			<div>Outstanding: <span class="num_out"><%= checkout.outstanding %></span></div>
 			<div>Checkout Total: <%= checkout.num_checked %></div>
-			<% if current_user && current_user.admin? %>
-				<div><%= link_to "Return", return_path(checkout) %></div>
+			<% if current_user && current_user.admin? && checkout.outstanding > 0 %>
+				<div><%= link_to ">Return", return_path(checkout) %></div>
 			<% end %>
 		</div>
 	</div>
