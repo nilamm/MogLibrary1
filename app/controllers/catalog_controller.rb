@@ -34,7 +34,7 @@ class CatalogController < ApplicationController
 		end
 		@resources_total = @resources.count
 		@resources_showing = @resources.limit(@pagelimit).count
-		#@resources = @resources.paginate(:page => params[:page], :per_page => @pagelimit)
+		@resources = @resources.paginate(:page => params[:page], :per_page => @pagelimit)
 	end
 
 	def edit
