@@ -24,8 +24,11 @@
 		</div>
 		<div class="voice_lang_row">
 			<% if resource.voice.present? %>
-				<%= resource.voice %> | 
+				<%= resource.voice %>
 			<% end %>
+			<% if resource.voice.present? && resource.language.present? %>
+				 | 
+				 <% end %>
 			<%= resource.language %>
 		</div>
 		<div class="avail_row">
