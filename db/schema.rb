@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150706032225) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "checkouts", force: :cascade do |t|
     t.integer  "num_checked"
     t.string   "notes"
