@@ -43,5 +43,10 @@ group :development, :test do
   gem 'spring'
 
   gem 'will_paginate'
+
+  ruby '2.2.1'
+
+  gem 'rails_12factor', group: :production
+
 end
 
