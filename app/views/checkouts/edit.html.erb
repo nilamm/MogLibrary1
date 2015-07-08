@@ -1,13 +1,25 @@
-<%= @checkout.user.name_and_username %>
-<%= @checkout.resource.title %>
-		<%= form_for @checkout, url: {action: "update"} do |f| %>
-			<div class="form-group">
-				<%= f.label :notes, class: 'col-sm-3 control-label' %>
-				<div class="col-sm-9">
-				<%= f.text_field :notes, class: 'form-control form_target'%>
+
+<div class="col-sm-9 col-sm-offset-2 checkout_form">
+	<div class="title">
+		<h4>Editing checkout of "<%= @checkout.resource.title %>" from <%= @checkout.user.name_and_username %>.</h4>
+	</div>
+</div>
+<div class="col-sm-8 col-sm-offset-2 checkout_form">
+		<%= form_for @checkout, url: {action: "return_update"} do |f| %>
+		<div class="form-box">
+			<div class="row">
+				<div class="form-group">
+					<%= f.label :notes, class: 'col-sm-3 control-label' %>
+					<div class="col-sm-9">
+					<%= f.text_area :notes, class: 'form-control form_target'%>
+					</div>
 				</div>
 			</div>
-			<div class="subm_edit_btn">
-				<%= f.submit "Update", class: 'btn-info active'%>
+			<div class="row">
+				<div class="subm_edit_btn col-sm-9 col-sm-offset-3">
+					<%= f.submit "Update", class: 'btn-info active'%>
+				</div>
 			</div>
+		</div>
 		<% end %>
+</div>

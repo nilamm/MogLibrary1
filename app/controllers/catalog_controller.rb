@@ -1,9 +1,13 @@
 class CatalogController < ApplicationController
-	before_action :require_user, only: [:search, :index, :edit, :update, :new, :create, :show, :show_checkouts]
-	before_action :require_admin, only: [:index, :new, :create]
+	before_action :require_user, only: [:search, :index, :edit, :update, :new, :create, :show, :show_checkouts, :destroy]
+	before_action :require_admin, only: [:index, :new, :create, :destroy]
 
 	def welcome
-		@resource_count = Resource.all.count
+		if current_user
+			@resource_count = Resource.where(:library => current_user.region).count
+		else
+			@resource_count = Resource.all.count
+		end
 	end
 
 	def index
@@ -21,8 +25,10 @@ class CatalogController < ApplicationController
 	def search
 		@pagelimit = 20
 		if params[:search]
+			@region = current_user.region
 			#@resources = Resource.search(params[:search]).order(:title)
-			#@resources = Resource.search(params[:search]).where(:id => current_user.id)
+			@resources_and_comments = Resource.joins(:comments)
+			@resources = Resource.search(params[:search]).where(:library => @region).order(:title)
 		else
 			@resources = nil
 		end
@@ -61,6 +67,17 @@ class CatalogController < ApplicationController
 		end
 	end
 
+	def destroy
+		@resource = Resource.find(params[:id])
+		if @resource.destroy
+		    flash[:success] = "Resource deleted"
+		    redirect_to '/'
+		else
+			render 'welcome'
+			flash[:error] = "Photo could not be deleted."
+		end
+	end
+
 	def show_checkouts
 		@resource = Resource.find(params[:id])
 		@checkouts = @resource.checkouts
@@ -70,7 +87,7 @@ class CatalogController < ApplicationController
 
 	private
 		def resource_params
-			params.require(:resource).permit(:title, :composer, :arranger, :libretto, :voice, :accomp, :genre, :language, :region, :theme, :curric, :additional, :res_type, :link, :pic, :num_avail, :num_tot)
+			params.require(:resource).permit(:title, :composer, :arranger, :libretto, :voice, :accomp, :genre, :language, :region, :theme, :curric, :additional, :res_type, :link, :pic, :num_avail, :num_tot, :library)
 		end
 
 	

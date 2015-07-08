@@ -1,13 +1,46 @@
-<div class="col-sm-10 col-sm-offset-1">
-	<div class="row">
-		<div>Comment by <span><%= @comment.user.name_and_username %></span></div>
-		<%= form_for @comment do |f| %>
-			<%= f.text_area :content, class: 'form_target' %>
-			<%= f.number_field :rating, min: 1, max: 5 %>
-
-			<div class="subm_edit_btn">
-				<%= f.submit "Update", class: 'btn-info active'%>
-			</div>
-		<% end %>
+<div class="col-sm-9 col-sm-offset-2 checkout_form">
+	<div class="title">
+		<h3>Comment by <span><%= @comment.user.name_and_username %></span></h3>
 	</div>
+</div>
+<div class="col-sm-8 col-sm-offset-2 checkout_form">
+	<%= form_for @comment do |f| %>
+		<div class="form-box">
+			<div class="row">
+				<div class="form-group">
+					<%= f.label :content, 'Comment', class: 'col-sm-3 control-label' %>
+					<div class="col-sm-9">
+						<%= f.text_area :content, class: 'form-control' %>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class-"form-group">
+					<%= f.label :rating, 'Rating', class: 'col-sm-3 control-label' %>
+					<div class="col-sm-9">
+						<%= f.radio_button :rating, 1, class: 'radio-inline' %>
+						<%= f.label :rating, '1', value: 1, class: 'radio_label' %>
+						<%= f.radio_button :rating, 2, class: 'radio-inline' %>
+						<%= f.label :rating, '2', value: 2, class: 'radio_label' %>
+						<%= f.radio_button :rating, 3, class: 'radio-inline' %>
+						<%= f.label :rating, '3', value: 3, class: 'radio_label' %>
+						<%= f.radio_button :rating, 4, class: 'radio-inline' %>
+						<%= f.label :rating, '4', value: 4, class: 'radio_label' %>
+						<%= f.radio_button :rating, 5, class: 'radio-inline' %>
+						<%= f.label :rating, '5', value: 5, class: 'radio_label' %>
+						<span class="best">(best)</span>
+					</div>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="subm_edit_btn col-sm-9 col-sm-offset-3">
+					<%= f.submit "Submit Edit", class: 'btn-primary'%>
+				</div>
+			</div>
+		</div>
+		<div>
+      <%= link_to "delete", @comment, method: :delete, data: { confirm: "Permanently delete comment and rating?"}, class: "delete_button" %> 
+    	</div>
+	<% end %>
 </div>

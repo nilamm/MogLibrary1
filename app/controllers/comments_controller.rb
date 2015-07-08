@@ -1,9 +1,12 @@
 class CommentsController < ApplicationController
-	before_action :require_user, only: [:index, :new, :create, :edit, :update]
+	before_action :require_user, only: [:index, :new, :create, :edit, :update, :destroy]
 	before_action :require_admin, only: [:index]
 	
 	def index
-		@comments = Comment.all.includes(:user).order("users.last_name ASC")
+		@region = current_user.region
+		@comment_region = Comment.includes(:resource).where(:resources => { :library => @region })
+		@comments = @comment_region.all.includes(:user).order("users.last_name ASC")
+		#@comments = Comment.all.includes(:user).order("users.last_name ASC")
 	end
 
 	def new
@@ -35,6 +38,12 @@ class CommentsController < ApplicationController
 		else
 			render 'edit'
 		end
+	end
+
+	def destroy
+		Comment.find(params[:id]).destroy
+	    flash[:success] = "Comment deleted"
+	    redirect_to root_path
 	end
 
 	private

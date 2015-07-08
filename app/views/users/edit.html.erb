@@ -1,11 +1,69 @@
-    <%= form_for(@user) do |f| %>
-      <%= f.text_field :first_name, :placeholder => "First name" %>
-      <%= f.text_field :last_name, :placeholder => "Last name" %>
-      <%= f.text_field :username, :placeholder => "Username" %>
-      <%= f.text_field :region, :placeholder => "Region" %>
-      <%= f.text_field :role, :placeholder => "Role" %>
-      <div>Reset password?</div>
-      <%= f.submit "Update account", class: "btn-submit" %>
-    <% end %>
-
-    <%= link_to "delete", @user, method: :delete, data: { confirm: "Permanently delete #{@user.first_name} #{@user.last_name}?"} %> 
+<div class="col-sm-9 col-sm-offset-2 checkout_form">
+  <div class="title">
+    <h3>Edit account: <span class="account_name"><%= @user.name_and_username %></span></h3>
+  </div>
+</div>
+<div class="col-sm-8 col-sm-offset-2 checkout_form">
+  <%= form_for @user do |f| %>
+    <div class="form-box">
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :first_name, 'First Name', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-9">
+            <%= f.text_field :first_name, class: 'form-control form_target' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :last_name, 'Last Name', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-9">
+            <%= f.text_field :last_name, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :username, 'Username', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-9">
+            <%= f.text_field :username, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <%= f.label :password, 'Password', class: 'col-sm-3 control-label' %>
+          <div class="col-sm-9">
+            <%= f.password_field :password, class: 'form-control', placeholder: '[type new password to reset]' %>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+      <%= f.label :role, 'Role', class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+            <%= f.radio_button :role, 'user', class: 'radio-inline' %>
+            <%= f.label :role, 'User', value: 'user', class: 'radio_label' %>
+            <%= f.radio_button :role, 'admin', class: 'radio-inline' %>
+            <%= f.label :role, 'Admin', value: 'admin', class: 'radio_label' %>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.label :region, 'Region', class: 'col-sm-3 control-label' %>
+      <div class="col-sm-9">
+            <%= f.radio_button :region, 'NY', class: 'radio-inline' %>
+            <%= f.label :region, 'NY', value: 'NY', class: 'radio_label' %>
+            <%= f.radio_button :region, 'MA', class: 'radio-inline' %>
+            <%= f.label :region, 'Boston', value: 'MA', class: 'radio_label' %>
+      </div>
+    </div>
+      <div class="row">
+        <div class="subm_edit_btn col-sm-9 col-sm-offset-3">
+          <%= f.submit "Update Account", class: 'btn-primary'%>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= link_to "delete", @user, method: :delete, data: { confirm: "Permanently delete #{@user.first_name} #{@user.last_name}?"}, class: "delete_button" %> 
+    </div>
+  <% end %>
+</div>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
  post '/catalog' => 'catalog#create'
  root 'catalog#welcome'
 
+ delete '/catalog/:id' => 'catalog#destroy', as: :delete_resource
+
  get 'signup' => 'users#new'
  resources :users
 

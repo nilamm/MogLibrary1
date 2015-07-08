@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Met Guild Resource Library</title>
+  <title>MOG Resource Library</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -18,7 +18,16 @@
 			<div class="container" id="header">
 				<div class="row" id="menu_bar">
 					<div class="col-sm-3 mogtitle">
-						<%= link_to "Met Opera Guild Resource Library", "/", class: 'title_link' %>
+						<div>
+							<%= link_to "Met Opera Guild Resource Library", "/", class: 'title_link' %>
+						</div>
+						<div class="region_label">
+							<% if current_user && current_user.region == "NY" %>
+								[NYC]
+							<% elsif current_user && current_user.region == "MA" %>
+								[Boston]
+							<% end %>	
+						</div>
 					</div>
 					<div class="col-sm-2 menu_list">
 						<ul>

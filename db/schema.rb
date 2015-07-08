@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150705172915) do
+ActiveRecord::Schema.define(version: 20150706032225) do
 
   create_table "checkouts", force: :cascade do |t|
     t.integer  "num_checked"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150705172915) do
     t.string   "pic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "library"
   end
 
   create_table "users", force: :cascade do |t|

@@ -38,6 +38,14 @@
   text-decoration: none;
 }
 
+.region_label {
+  font-weight: 300;
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  color: #5b5b5b;
+  font-size: 90%;
+}
+
 .username {
   font-weight: 700;
 }
@@ -124,6 +132,21 @@ ul.moreinfo_list {
   display: none;
 }
 
+.inline_comments {
+  list-style-type: none;
+  padding: none;
+  position: relative;
+  left: -25px;
+}
+
+.inline_comments .comment {
+  font-weight: 300;
+}
+
+.inline_comments .stars {
+  font-size: 75%;
+}
+
 /* For anything that causes the Additional Info section to expand */
 .expander:hover {
   cursor: pointer;
@@ -169,6 +192,20 @@ ul.moreinfo_list {
   text-align: center;
   padding: none;
   height: 40px;
+}
+
+.rating {
+  font-weight: 300;
+  font-size: 90%;
+}
+
+.rating .stars {
+  font-size: 90%;
+}
+
+.rating:hover {
+  text-decoration: underline;
+  cursor: pointer
 }
 
 
@@ -435,6 +472,94 @@ ul.moreinfo_list {
   color: #000;
 }
 
+/* New Checkout Form */
+
+.checkout_form .control-label {
+  text-align: right;
+  position: relative;
+}
+
+.checkout_form {
+  padding: none;
+  color: #757575;
+}
+
+.checkout_form .title {
+ margin-top: 10px;
+ margin-left: 15px;
+ margin-bottom: 20px;
+ color: #757575;
+}
+
+.checkout_form select {
+  display: block;
+  font-size: 200%;
+  width: 100%;
+  margin-bottom: 10px
+}
+
+.checkout_form .row {
+  margin-bottom: 10px
+}
+
+.checkout_form .max {
+  font-weight: 300;
+  position: relative;
+  top: .5em;
+  left: -15px;
+}
+
+.checkout_form .best {
+  font-weight: 300;
+  position: relative;
+  top: 3px;
+  left: 5px;
+}
+
+.checkout_form .form-box {
+  padding: 30px 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #f8e6e3;
+  box-shadow: 2px 2px 5px #e2d5c8;
+  color: #757575;
+}
+
+.checkout_form input, textarea {
+  color: #757575;
+}
+
+.checkout_form input[type=submit] {
+  display: block;
+  width: 100%;
+  height: 40px;
+  color: #fff;
+}
+
+.checkout_form .subm_edit_btn {
+  margin-top: 5px
+}
+
+.checkout_form .radio-inline {
+  margin-left: 15px
+}
+
+.checkout_form .radio_label {
+  position: relative;
+  top: 3px;
+}
+
+.checkout_form input[type=text], input[type=password] {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 40px;
+  margin-left: 0px;
+  padding-left: 5px;
+  color: #757575;
+}
+
+.checkout_form .account_name {
+  font-weight: 300
+}
 
 
 .comments_lead {
@@ -493,4 +618,37 @@ ul.moreinfo_list {
   font-weight: 400;
 }
 
+.resource_form input[type=submit]{
+  display: block;
+  width: 100%;
+  height: 40px;
+  color: #fff;
+  margin-top: 5px;
+  margin-bottom: 10px
+}
 
+.resource_form .radio-inline {
+  margin-left: 10px;
+}
+
+.resource_form .radio_label {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 10px
+}
+
+.resource_form .form_target {
+  margin-top: 10px
+}
+
+.user_table {
+  margin-top: 20px
+}
+
+.user_table .pw {
+  text-align: center;
+}
+
+.delete_button {
+  text-align: right
+}

@@ -109,10 +109,10 @@
 				<%= image_tag resource.pic, :class => "img-responsive" %>
 			<% end %>
 		</div>
-		<div class="rating">
+		<div class="rating expander">
 			<div>
 				<% if resource.avg_rating.present? %>
-					<%= raw resource.avg_rating %>
+					<span class="stars"><%= raw resource.avg_rating %></span>
 				<% end %>
 			</div>
 				<% if resource.comments.count > 0 %>

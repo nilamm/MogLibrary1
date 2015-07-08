@@ -4,8 +4,10 @@ class CheckoutsController < ApplicationController
 	before_action :require_admin, only: [:index, :new, :create, :return, :return_udpate, :edit, :update]
 	
 	def index
-		@checkouts_out = Checkout.where("outstanding > 0").includes(:user).order("users.last_name ASC")
-		@checkouts_ret = Checkout.where("outstanding = 0").includes(:user).order("users.last_name ASC")
+		@region = current_user.region
+		@checkouts = Checkout.includes(:resource).where(:resources => { :library => @region })
+		@checkouts_out = @checkouts.where("outstanding > 0").includes(:user).order("users.last_name ASC")
+		@checkouts_ret = @checkouts.where("outstanding = 0").includes(:user).order("users.last_name ASC")
 	end
 
 	def new

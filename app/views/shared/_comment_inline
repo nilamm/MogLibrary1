@@ -1,8 +1,8 @@
-<ul>
+<ul class="inline_comments">
 <% comments.each do |comment| %>
 	<li>
-		<%= comment.user.first_last %>: <%= comment.content %>
-		<%= raw comment.rating_stars %>
+		<span class="comment_bullet">></span><%= comment.user.first_last %>: <span class="comment"><%= comment.content %></span>
+		<span class="stars"><%= raw comment.rating_stars %></span>
 		<% if current_user && (current_user == comment.user || current_user.admin?) %>
 			<%= link_to "[Edit]", edit_comment_path(comment) %>
 		<% end %>

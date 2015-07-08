@@ -1,15 +1,44 @@
-<div class="col-sm-10 col-sm-offset-1">
-	<div class="row">
-		<div>Check out <span><%= @resource.title %></span></div>
-		<%= form_for @checkout do |f| %>
-			<%= f.collection_select :user_id, User.all, :id, :name_and_username %>
-			<%= f.number_field :num_checked, min: 1, value: 1, max: @resource.num_avail %>
-			<%= f.text_area :notes %>
-			<%= f.hidden_field :resource_id, value: @resource.id %>
-
-			<div class="subm_edit_btn">
-				<%= f.submit "Submit", class: 'btn-info active'%>
-			</div>
-		<% end %>
+<div class="col-sm-9 col-sm-offset-2 checkout_form">
+	<div class="title">
+		<h3>New checkout for "<span><%= @resource.title %>."</span></h3>
 	</div>
+</div>
+<div class="col-sm-8 col-sm-offset-2 checkout_form">
+	<%= form_for @checkout do |f| %>
+		<div class="form-box">
+			<div class="row">
+					<div class="form-group">
+						<%= f.label :user_id, 'Select Artist', class: 'col-sm-3 control-label' %>
+						<div class="col-sm-9">
+							<%= f.collection_select :user_id, User.where(:region => current_user.region), :id, :name_and_username, class: 'form-control form_target'%>
+						</div>
+					</div>
+			</div>
+			<div class="row">
+				<div class-"form-group">
+					<%= f.label :num_checked, 'Quantity', class: 'col-sm-3 control-label' %>
+					<div class="col-sm-4">
+						<%= f.number_field :num_checked, min: 1, value: 1, max: @resource.num_avail, class: 'form-control' %>
+					</div>
+					<div class="col-sm-5 max">
+						(<%= @resource.num_avail %> available)
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<%= f.label :notes, 'Notes', class: 'col-sm-3 control-label' %>
+					<div class="col-sm-9">
+						<%= f.text_area :notes, class: 'form-control' %>
+					</div>
+				</div>
+				<%= f.hidden_field :resource_id, value: @resource.id%>
+			</div>
+			<div class="row">
+				<div class="subm_edit_btn col-sm-9 col-sm-offset-3">
+					<%= f.submit "Submit", class: 'btn-primary'%>
+				</div>
+			</div>
+		</div>
+	<% end %>
 </div>

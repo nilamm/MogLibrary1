@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 	#before_filter :authenticate_user! 
 
 	def index
-		@users = User.all.order(:last_name)
+		@users = User.all.order(region: :desc, last_name: :asc)
 	end
 
 	def show
@@ -16,7 +16,8 @@ class UsersController < ApplicationController
 	end
 
 	def user_checkouts
-		@users = User.joins(:checkouts).uniq.order("last_name ASC")
+		@region = current_user.region
+		@users = User.where(:region => @region).includes(:checkouts).uniq.order("last_name ASC")
 	end
 
 
