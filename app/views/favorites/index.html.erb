@@ -1,0 +1,9 @@
+<% if @favorites.present? %>
+<div class="checkouts_lead">Showing favorites for <%= @user.name_and_username %>.</div>
+	<% @favorites.each do |favorite| %>
+		<%= render partial: "shared/list", locals: {resource: favorite.resource}%>
+	<% end %>
+
+<% else %>
+	<div class="checkouts_lead">No resources saved to your list.</div>
+<% end %>

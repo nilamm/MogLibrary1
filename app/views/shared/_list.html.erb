@@ -84,10 +84,11 @@
 					<% end %>
 				</li>
 				<li><%= link_to "Add Comment", new_comment_path(:resource_id => resource) %></li>
-				<% if current_user && !current_user.admin? %>
-					<li><a href="#">Request Checkout</a></li>
+				<% if resource.favorites.where(:user_id => current_user).exists? %>
+					<li><%= link_to "Remove from favorites", destroy_favorites_params_path(:user_id => current_user, :resource_id => resource), method: :delete %> </li>
+				<% else %>
+					<li><%= link_to 'Add to Favorites', favorites_path(:user_id => current_user, :resource_id => resource, :action => :create), :method => :post %></li>
 				<% end %>
-
 				<% if current_user && current_user.admin? %>
 					<li><%= link_to "Checkout Item", new_checkout_path(:resource_id => resource) %></li>
 				<% end %>

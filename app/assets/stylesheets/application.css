@@ -31,6 +31,7 @@
 .menu_list ul, .login_div ul {
   list-style-type: none;
   padding: none;
+  text-align: right;
 }
 
 .title_link:link, .title_link:visited, .title_link:hover, .title_link:active {

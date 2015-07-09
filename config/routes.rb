@@ -26,5 +26,7 @@ Rails.application.routes.draw do
  get '/catalog/:id/checkouts' => 'catalog#show_checkouts', as: :resource_checkouts
 
  resources :comments
+ resources :favorites
+ delete 'favorites/' => 'favorites#destroy_by_params', as: :destroy_favorites_params
  
 end

@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
 	has_many :resources, through: :checkouts
 	has_many :comments
 	has_many :resources, through: :comments
+	has_many :favorites
+	has_many :resources, through: :favorites
 
 
 end
