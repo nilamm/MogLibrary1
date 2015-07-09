@@ -495,7 +495,7 @@ ul.moreinfo_list {
 
 .checkout_form select {
   display: block;
-  font-size: 150%;
+  font-size: 100%;
   width: 100%;
   margin-bottom: 10px
 }
@@ -614,6 +614,12 @@ ul.moreinfo_list {
 
 .comment_entry .cat {
   font-weight: 400;
+}
+
+.comment_entry .stars {
+  color: #9b5205;
+  position: relative;
+  top: 2px;
 }
 
 .comment_entry a {
