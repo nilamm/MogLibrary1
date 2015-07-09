@@ -92,6 +92,7 @@
 				</div>
 			</div>
 		</div>
+	<% if current_user && current_user.admin? %>
 		<div class="row">
 			<%= f.label :library, 'Library', class: 'col-sm-3 control-label' %>
 			<div class="col-sm-9">
@@ -117,6 +118,7 @@
 				</div>
 			</div>	
 		</div>
+	<% end %>
 		<div class="row">
 			<div class="subm_edit_btn col-sm-9 col-sm-offset-3">
 				<%= f.submit "Update", class: 'btn-info active'%>
