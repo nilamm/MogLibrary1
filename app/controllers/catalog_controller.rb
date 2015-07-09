@@ -27,8 +27,9 @@ class CatalogController < ApplicationController
 		if params[:search]
 			@region = current_user.region
 			#@resources = Resource.search(params[:search]).order(:title)
-			@resources_and_comments = Resource.joins(:comments)
-			@resources = Resource.search(params[:search]).where(:library => @region).order(:title)
+			#@resources_and_comments = Resource.joins(:comments)
+			@resources = Resource.search_resources(params[:search])
+			#@resources = Resource.search(params[:search]).where(:library => @region).order(:title)
 		else
 			@resources = nil
 		end

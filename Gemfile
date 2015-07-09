@@ -34,6 +34,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'will_paginate'
 
+gem 'pg_search'
+
 ruby '2.2.1'
 
 gem 'rails_12factor', group: :production

@@ -3,6 +3,9 @@ class Resource < ActiveRecord::Base
 		where("title like ? OR composer like ? OR arranger like ? OR libretto like ? OR voice like ? OR accomp like ? OR genre like ? OR language like ? OR region like ? OR theme like ? OR curric like ? OR additional like ? OR res_type like ?", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")
 	end
 
+	include PgSearch
+	pg_search_scope :search_resources, :against => [:title, :composer, :arranger, :libretto, :voice, :accomp, :genre, :language, :region, :theme, :curric, :additional, :res_type]
+
 	has_many :checkouts
 	has_many :users, through: :checkouts
 	has_many :comments
