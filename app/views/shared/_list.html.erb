@@ -1,5 +1,5 @@
 <div class="row entry">
-	<div class="col-xs-12 col-sm-1 expander">
+	<div class="col-sm-1 expander">
 			<span class="rank"></span><span class="expand_but">[+]</span>
 	</div>
 	<div class="col-xs-10 col-sm-9">
@@ -102,7 +102,7 @@
 			</ul>
 		</div>
 	</div>
-	<div class="col-xs-2 pic_col">
+	<div class="col-xs-12 col-sm-2 pic_col">
 		<div class="pic_link">
 			<% if resource.link.present? && resource.pic.present? %>
 				<%= link_to (image_tag resource.pic), resource.link, :target => "_blank", :class => "img-responsive"  %>

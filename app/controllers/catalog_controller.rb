@@ -75,7 +75,7 @@ class CatalogController < ApplicationController
 		    redirect_to '/'
 		else
 			render 'welcome'
-			flash[:error] = "Photo could not be deleted."
+			flash[:error] = "Resource could not be deleted."
 		end
 	end
 
