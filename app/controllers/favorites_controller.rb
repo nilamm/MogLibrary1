@@ -6,6 +6,11 @@ class FavoritesController < ApplicationController
 		@favorites = @user.favorites
 	end
 
+	def by_user
+		@user = User.find(params[:id])
+		@favorites = @user.favorites
+	end
+
 	def create
 		@favorite = Favorite.new(favorite_params)
 		if @favorite.save

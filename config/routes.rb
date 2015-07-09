@@ -28,5 +28,7 @@ Rails.application.routes.draw do
  resources :comments
  resources :favorites
  delete 'favorites/' => 'favorites#destroy_by_params', as: :destroy_favorites_params
+ get '/userfavorites' => 'users#user_favorites', as: :user_favorites
+ get '/user/:id/favorites' => 'favorites#by_user', as: :by_user
  
 end

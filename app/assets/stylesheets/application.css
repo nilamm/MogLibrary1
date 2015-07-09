@@ -661,3 +661,17 @@ ul.moreinfo_list {
 .delete_button {
   text-align: right
 }
+
+.favorites_lead {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  color: #909090;
+  text-align: center
+}
+
+.favorites_second {
+  font-weight: 400;
+  color: #909090;
+  text-align: left
+}

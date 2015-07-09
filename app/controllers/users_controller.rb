@@ -17,7 +17,13 @@ class UsersController < ApplicationController
 
 	def user_checkouts
 		@region = current_user.region
-		@users = User.where(:region => @region).includes(:checkouts).uniq.order("last_name ASC")
+		#@users = User.where(:region => @region).includes(:checkouts).uniq.order("last_name ASC")
+		@users = User.where(:region => @region).joins(:checkouts).order("last_name ASC")
+	end
+
+	def user_favorites
+		@region = current_user.region
+		@users = User.where(:region => @region).joins(:favorites).uniq.order("last_name ASC")
 	end
 
 
