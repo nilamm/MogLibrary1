@@ -1,6 +1,11 @@
 	<div class="row checkout_entry">
 		<div class="col-sm-3">
 			<div class="title"><%= link_to checkout.resource.title, show_resource_path(checkout.resource) %></div>
+			<div class="subtitle">
+				<% if checkout.resource.res_type.present? %>
+					[<%= checkout.resource.res_type %>]
+				<% end %>
+			</div>
 			<div>
 			<% if checkout.resource.link.present? && checkout.resource.pic.present? %>
 				<%= link_to (image_tag checkout.resource.pic), checkout.resource.link, :target => "_blank", :class => "img-responsive"  %>

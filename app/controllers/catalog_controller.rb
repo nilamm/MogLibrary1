@@ -28,7 +28,7 @@ class CatalogController < ApplicationController
 			@region = current_user.region
 			#@resources = Resource.search(params[:search]).order(:title)
 			#@resources_and_comments = Resource.joins(:comments)
-			@resources = Resource.search_resources(params[:search])
+			@resources = Resource.search_resources(params[:search]).where(:library => @region)
 			#@resources = Resource.search(params[:search]).where(:library => @region).order(:title)
 		else
 			@resources = nil

@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 		"#{first_name} #{last_name} (#{username})"
 	end
 
+	def last_first
+		"#{last_name}, #{first_name} (#{username})"
+	end
+
 	def first_last
 		"#{first_name} #{last_name}"
 	end

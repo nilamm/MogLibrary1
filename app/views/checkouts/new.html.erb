@@ -10,7 +10,7 @@
 					<div class="form-group">
 						<%= f.label :user_id, 'Select Artist', class: 'col-sm-3 control-label' %>
 						<div class="col-sm-9">
-							<%= f.collection_select :user_id, User.where(:region => current_user.region), :id, :name_and_username, class: 'form-control form_target'%>
+							<%= f.collection_select :user_id, User.where(:region => current_user.region), :id, :last_first, class: 'form-control form_target'%>
 						</div>
 					</div>
 			</div>
