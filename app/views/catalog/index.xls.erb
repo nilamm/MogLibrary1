@@ -25,6 +25,7 @@
         <Cell><Data ss:Type="String">Resource Type</Data></Cell>
         <Cell><Data ss:Type="String">Link</Data></Cell>
         <Cell><Data ss:Type="String">Picture Link</Data></Cell>
+        <Cell><Data ss:Type="String">Library</Data></Cell>
       </Row>
     <% @resources.each do |resource| %>
       <Row>
@@ -46,6 +47,7 @@
         <Cell><Data ss:Type="String"><%= resource.res_type %></Data></Cell>
         <Cell><Data ss:Type="String"><%= resource.link %></Data></Cell>
         <Cell><Data ss:Type="String"><%= resource.pic %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= resource.library %></Data></Cell>
       </Row>
     <% end %>
     </Table>
