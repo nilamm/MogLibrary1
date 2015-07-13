@@ -38,6 +38,8 @@ gem 'pg_search'
 
 ruby '2.2.1'
 
+gem 'puma'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do
