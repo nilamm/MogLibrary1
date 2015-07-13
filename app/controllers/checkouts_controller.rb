@@ -1,7 +1,7 @@
 class CheckoutsController < ApplicationController
 	#restrict new, create, destroy to only admin
 	before_action :require_user, only: [:index, :new, :create, :return, :return_update, :edit, :update]
-	before_action :require_admin, only: [:index, :new, :create, :return, :return_udpate, :edit, :update]
+	before_action :require_admin, only: [:index, :new, :create, :return, :return_udpate, :edit, :update, :destroy]
 	
 	def index
 		@region = current_user.region
@@ -20,9 +20,9 @@ class CheckoutsController < ApplicationController
 		@checkout = Checkout.new(checkout_params)
 		if @checkout.save
 			@checkout.update(outstanding: @checkout.num_checked)
-			@resource = @checkout.resource
-			@resource.num_avail -= @checkout.num_checked
-			@resource.save
+			#@resource = @checkout.resource
+			#@resource.num_avail -= @checkout.num_checked
+			#@resource.save
 			#redirect_to root_path
 			redirect_to session.delete(:return_to)
 		else
@@ -58,9 +58,15 @@ class CheckoutsController < ApplicationController
 		end
 	end
 
+	def destroy
+		Checkout.find(params[:id]).destroy
+	    flash[:success] = "Checkout deleted"
+	    redirect_to root_path
+	end
+
 	private
 		def checkout_params
-			params.require(:checkout).permit(:num_checked, :notes, :user_id, :resource_id)
+			params.require(:checkout).permit(:num_checked, :notes, :user_id, :resource_id, :outstanding)
 		end
 
 		def return_params

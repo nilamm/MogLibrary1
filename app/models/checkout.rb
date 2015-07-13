@@ -14,8 +14,8 @@ class Checkout < ActiveRecord::Base
 
 	def returning=(num)
 		self.outstanding -= num.to_i
-		self.resource.num_avail += num.to_i
-		self.resource.save
+		#self.resource.num_avail += num.to_i
+		#self.resource.save
 	end
 
 end

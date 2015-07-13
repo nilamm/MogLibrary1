@@ -18,10 +18,10 @@
 				<div class-"form-group">
 					<%= f.label :num_checked, 'Quantity', class: 'col-sm-3 control-label' %>
 					<div class="col-sm-4">
-						<%= f.number_field :num_checked, min: 1, value: 1, max: @resource.num_avail, class: 'form-control' %>
+						<%= f.number_field :num_checked, min: 1, value: 1, max: @resource.res_outstanding, class: 'form-control' %>
 					</div>
 					<div class="col-sm-5 max">
-						(<%= @resource.num_avail %> available)
+						(<%= @resource.res_outstanding %> available)
 					</div>
 				</div>
 			</div>

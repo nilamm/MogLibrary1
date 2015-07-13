@@ -60,7 +60,7 @@ class CatalogController < ApplicationController
 	def create
 		@resource = Resource.new(resource_params)
 		if @resource.save
-			@resource.update(num_avail: @resource.num_tot)
+			#@resource.update(num_avail: @resource.num_tot)
 			#redirect_to root_path
 			redirect_to session.delete(:return_to)
 		else
@@ -78,7 +78,7 @@ class CatalogController < ApplicationController
 			flash[:error] = "Resource could not be deleted."
 		end
 	end
-
+	
 	def show_checkouts
 		@resource = Resource.find(params[:id])
 		@checkouts = @resource.checkouts
@@ -88,7 +88,7 @@ class CatalogController < ApplicationController
 
 	private
 		def resource_params
-			params.require(:resource).permit(:title, :composer, :arranger, :libretto, :voice, :accomp, :genre, :language, :region, :theme, :curric, :additional, :res_type, :link, :pic, :num_avail, :num_tot, :library)
+			params.require(:resource).permit(:title, :composer, :arranger, :libretto, :voice, :accomp, :genre, :language, :region, :theme, :curric, :additional, :res_type, :link, :pic, :num_tot, :library)
 		end
 
 	

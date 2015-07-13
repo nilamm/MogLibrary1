@@ -5,8 +5,35 @@
 	</div>
 </div>
 <div class="col-sm-8 col-sm-offset-2 checkout_form">
-		<%= form_for @checkout, url: {action: "return_update"} do |f| %>
+		<%= form_for @checkout, url: {action: "update"} do |f| %>
 		<div class="form-box">
+			<div class="row">
+					<div class="form-group">
+						<%= f.label :user_id, 'Select Artist', class: 'col-sm-3 control-label' %>
+						<div class="col-sm-9">
+							<%= f.collection_select :user_id, User.where(:region => current_user.region), :id, :last_first, class: 'form-control form_target'%>
+						</div>
+					</div>
+			</div>
+			<div class="row">
+				<div class-"form-group">
+					<%= f.label :num_checked, 'Total Checkout', class: 'col-sm-3 control-label' %>
+					<div class="col-sm-4">
+						<%= f.number_field :num_checked, min: 1, class: 'form-control' %>
+					</div>
+					<div class="col-sm-5 max">
+						(<%= @checkout.resource.res_outstanding %> available)
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class-"form-group">
+					<%= f.label :outstanding, 'Number Outstanding', class: 'col-sm-3 control-label' %>
+					<div class="col-sm-4">
+						<%= f.number_field :outstanding, class: 'form-control' %>
+					</div>
+				</div>
+			</div>
 			<div class="row">
 				<div class="form-group">
 					<%= f.label :notes, class: 'col-sm-3 control-label' %>
@@ -21,5 +48,12 @@
 				</div>
 			</div>
 		</div>
+<% if current_user && current_user.admin? %>
+	<div class="container-fluid">
+		<div class="col-xs-12">
+			<%= link_to "delete", @checkout, method: :delete, data: { confirm: "Permanently delete checkout? (If you are returning an item, go to the checkout and click '>Return' instead.)"}, class: "delete_button" %> 
+		</div>
+	</div>
+<% end %>
 		<% end %>
 </div>

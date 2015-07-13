@@ -35,4 +35,9 @@ class Resource < ActiveRecord::Base
 		@checkouts_ret.count
 	end
 
+	def res_outstanding
+		num_out = num_tot - checkouts.sum(:outstanding)
+		num_out
+	end
+
 end
