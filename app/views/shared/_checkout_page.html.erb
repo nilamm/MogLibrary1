@@ -1,4 +1,4 @@
-<div class="checkout_heading">Outstanding:</div>
+<div class="checkout_heading expand_checkout">Outstanding:</div>
 <div class="checkout_section">
 <% if @checkouts_out.present? %>
 	<% @checkouts_out.each do |checkout| %>
@@ -9,11 +9,13 @@
 <% end %>
 </div>
 
-<% if @checkouts_ret.present? %>
-<div class="checkout_heading">Fully returned:</div>
-<div class="checkout_section">
-	<% @checkouts_ret.each do |checkout| %>
-		<%= render partial: "shared/checkouts", locals: {checkout: checkout}%>
+<div class="fully_checked">
+	<% if @checkouts_ret.present? %>
+	<div class="checkout_heading expand_checkout">Fully returned: <span class="checkout_sub">(click to expand)</span></div>
+	<div class="checkout_section hide_before_expand">
+		<% @checkouts_ret.each do |checkout| %>
+			<%= render partial: "shared/checkouts", locals: {checkout: checkout}%>
+		<% end %>
+	</div>
 	<% end %>
 </div>
-<% end %>

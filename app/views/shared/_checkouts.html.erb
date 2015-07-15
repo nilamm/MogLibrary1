@@ -37,7 +37,9 @@
 			<% if checkout.notes.present? %>
 				<div><span class="cat">Notes: </span><%= checkout.notes %></div>
 			<% end %>
-			<div><%= link_to "[Edit checkout]", edit_checkout_path(checkout) %></div>
+			<% if current_user && current_user.admin? %>
+				<div><%= link_to "[Edit checkout]", edit_checkout_path(checkout) %></div>
+			<% end %>
 		</div>
 		<div class="col-sm-3">
 			<div>Outstanding: <span class="num_out"><%= checkout.outstanding %></span></div>

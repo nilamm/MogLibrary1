@@ -31,6 +31,11 @@ $(document).on('page:change', function() { //uses page:change otherwise does not
    		toggleExpandBut($(this));
    });
 
+   $(".expand_checkout").click(function() {
+      var $checkoutSect = $(this).next();
+      $checkoutSect.slideToggle(300);
+   });
+
    function toggleExpandBut(item) {
    		var $expandbut = item.closest("div.entry").find(".expand_but");
    		if ($expandbut.text() == '[-]') {

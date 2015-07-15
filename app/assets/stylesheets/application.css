@@ -430,6 +430,22 @@ ul.moreinfo_list {
   font-weight: 300;
 }
 
+.expand_checkout {
+  cursor: pointer;
+}
+
+.hide_before_expand {
+  display: none;
+}
+
+.fully_checked {
+  margin-bottom: 20px
+}
+
+.checkout_sub {
+  font-size: 80%
+}
+
 .checkout_section {
   border-left: 3px solid #b7b7b7;
   border-radius: 10px;
