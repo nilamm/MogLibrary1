@@ -34,9 +34,12 @@
 				<% end %>
 				</div>
 			<div><span class="cat">Date: </span><%= checkout.created_at.strftime("%m/%d/%y %I:%M %p") %></div>
-			<% if checkout.notes.present? %>
-				<div><span class="cat">Notes: </span><%= checkout.notes %></div>
+			<% if checkout.user == current_user || current_user.admin? %>
+				<% if checkout.notes.present? %>
+					<div><span class="cat">Notes: </span><%= checkout.notes %></div>
+				<% end %>
 			<% end %>
+
 			<% if current_user && current_user.admin? %>
 				<div><%= link_to "[Edit checkout]", edit_checkout_path(checkout) %></div>
 			<% end %>
