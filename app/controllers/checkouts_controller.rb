@@ -5,7 +5,7 @@ class CheckoutsController < ApplicationController
 	
 	def index
 		@region = current_user.region
-		@checkouts = Checkout.includes(:resource).where(:resources => { :library => @region })
+		@checkouts = Checkout.includes(:resource).where(:resources => { :library => @region }).where.not(:resources => {:id => nil})
 		@checkouts_out = @checkouts.where("outstanding > 0").includes(:user).order("users.last_name ASC")
 		@checkouts_ret = @checkouts.where("outstanding = 0").includes(:user).order("users.last_name ASC")
 	end
